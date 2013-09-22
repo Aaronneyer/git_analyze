@@ -1,6 +1,13 @@
 # GitAnalyze
 
-TODO: Write a gem description
+Analyzes a repository on Github, outputting information about each authors and
+the overall repositories commit messages.
+
+It will output information about sentiment of messages, length of messages,
+and keywords found in messages.
+
+Do this it uses [AlchemyAPI](http://www.alchemyapi.com/api) with my own [custom
+SDK](https://github.com/Aaronneyer/alchemy-api) written on top of it.
 
 ## Installation
 
@@ -17,8 +24,14 @@ Or install it yourself as:
     $ gem install git_analyze
 
 ## Usage
+```bash
+git_analyze --api-key=ALCHEMYAPIKEY --oauth=GITHUBPERSONALTOKEN github_user github_repo
+```
 
-TODO: Write usage instructions here
+```ruby
+require git_analyze
+GitAnalyze.pull_stats('alchemyapikey', 'githuboauthtoken', github_user, github_repo)
+```
 
 ## Contributing
 
