@@ -24,7 +24,7 @@ module GitAnalyze
       author_commits = {} # Stores commit stats by author
       overall_stats = []
 
-      pool = Thread.pool(30)
+      pool = Thread.pool(100)
       commits.each do |commit|
         pool.process do
           message = commit.commit.message
