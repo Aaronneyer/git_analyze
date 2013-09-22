@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+require 'git_analyze'
+require 'optparse'
+
+options = {}
+OptionParser.new do |opts|
+  opts.on('--api-key=APIKEY', String, "AlchemyAPI api key") do |key|
+    options[:key] = key
+  end
+
+  opts.on('--oauth=OAUTH_TOKEN', String, "Github Oauth token") do |token|
+    options[:token] = token
+  end
+end.parse!
+
+overall_stats, author_commits = GitAnalyze.pull_stats(options[:key], options[:token], ARGV[0], ARGV[1])
+
+GitAnalyze.output_overall(overall_stats)
+GitAnalyze.output_author(author_commits)
